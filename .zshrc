@@ -10,7 +10,7 @@ ZSH_THEME="agnoster"
 CASE_SENSITIVE="true"
 HYPHEN_INSENSITIVE="true"
 
-plugins=(git)
+plugins=(git kubectl kubectx azure docker golang nvm pip sudo terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,3 +49,6 @@ setopt appendhistory
 # Autocomplete insensitive-case
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Enable kubectl context in terminal
+RPS1='$(kubectx_prompt_info)'
