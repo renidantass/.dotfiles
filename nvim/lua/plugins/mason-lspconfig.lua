@@ -15,7 +15,8 @@ return {
         "vuels",                        -- Vue.js (anteriormente Vetur)
         "ansiblels",                    -- Ansible
         "azure_pipelines_ls",           -- Azure Pipelines
-        "bashls"                        -- Bash
+        "bashls",                       -- Bash
+        "yamlls"                        -- YAML
       },
     },
   },
