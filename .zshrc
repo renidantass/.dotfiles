@@ -4,7 +4,7 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive and hyphen insensitive completion.
 CASE_SENSITIVE="true"
@@ -16,7 +16,7 @@ HYPHEN_INSENSITIVE="true"
         https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
 source ~/Repos/znap/znap.zsh  # Start Znap
 
-plugins=(git kubectl kubectx azure docker golang nvm pip sudo terraform zsh-autosuggestions zsh-autocomplete git-auto-fetch zsh-syntax-highlighting)
+plugins=(git kubectl kubectx azure docker golang nvm pip sudo terraform zsh-autosuggestions zsh-autocomplete git-auto-fetch zsh-syntax-highlighting asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,3 +53,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Enable kubectl context in terminal
 RPS1='$(kubectx_prompt_info)'
+
+# Created by `pipx` on 2024-09-04 15:34:03
+export PATH="$PATH:/home/rdantas/.local/bin"
+
+# asdf package manager
+. "$HOME/.asdf/asdf.sh"
