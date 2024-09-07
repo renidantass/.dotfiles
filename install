@@ -1,0 +1,39 @@
+#!/usr/bin/zsh
+
+# Installing asdf
+asdf_folder="$HOME/.asdf"
+
+if [ -d "$asdf_folder" ]; then
+  echo "asdf already installed"
+else
+  if command -v git > /dev/null 2>&1; then
+    git clone https://github.com/asdf-vm/asdf.git "$asdf_folder" --branch "v0.14.1"
+  else
+    echo "Git is not installed. Please install Git and try again."
+    exit 1
+  fi
+fi
+
+# Installing some zsh plugins
+custom_plugins_folder=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
+
+if [ -d "$custom_plugins_folder/zsh-autosuggestions" ]; then
+  echo "zsh-autosuggestions already installed"
+else
+  echo "Installing zsh-autosuggestions"
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+
+if [ -d "$custom_plugins_folder/zsh-autocomplete" ]; then
+  echo "zsh-autocomplete already installed"
+else
+  echo "Installing zsh-autocomplete"
+  git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+fi
+
+if [ -d "$custom_plugins_folder/zsh-syntax-highlighting" ]; then
+  echo "zsh-syntax-highlighting already installed"
+else
+  echo "Installing zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+fi
