@@ -1,5 +1,17 @@
 #!/usr/bin/zsh
 
+# Unzip binary
+
+unzip_is_installed=$(which unzip)
+
+if [[ $unzip_is_installed == *"not found"* ]];then
+  echo "installing unzip"
+  sudo pacman -Sy unzip
+else
+  echo "unzip already installed"
+fi
+
+
 # Installing asdf
 asdf_folder="$HOME/.asdf"
 
