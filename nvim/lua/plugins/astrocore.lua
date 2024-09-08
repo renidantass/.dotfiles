@@ -1,9 +1,28 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
+--
+
+local function split_with_buffer_horizontal()
+  require("astroui.status.heirline").buffer_picker(function(bufnr)
+    if bufnr then
+      vim.cmd("split")
+      vim.cmd("buffer " .. bufnr)
+    end
+  end)
+end
+
+local function split_with_buffer_vertical()
+  require("astroui.status.heirline").buffer_picker(function(bufnr)
+    if bufnr then
+      vim.cmd("vsplit")
+      vim.cmd("buffer " .. bufnr)
+    end
+  end)
+end
 
 ---@type LazySpec
 return {
@@ -49,6 +68,10 @@ return {
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+
+        -- split vertically and horizontally :p
+        ["<Leader>bv"] = { split_with_buffer_vertical, desc = "Dividir verticalmente" },
+        ["<Leader>bh"] = { split_with_buffer_horizontal, desc = "Dividir horizontalmente" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
